@@ -1,0 +1,1 @@
+<?php require VIEWS . "/post-create.tpl.php";
