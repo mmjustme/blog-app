@@ -1,7 +1,7 @@
 <?php
 
 $routes = [
-    FOLDER . "" => "index.php",
-    FOLDER . "/posts" => "posts.php",
-    FOLDER . "/posts/create" => "post-create.php",
+    "" => "index.php",
+    "/posts" => "posts.php",
+    "posts/create" => "post-create.php",
 ];

@@ -14,10 +14,10 @@
         <header class="header">
             <nav>
                 <ul>
-                    <li><a href="/blog-app">Home</a></li>
+                    <li><a href="">Home</a></li>
                 </ul>
                 <ul>
-                    <li><a href="/blog-app/posts/create">Create Post</a></li>
+                    <li><a href="/posts/create">Create Post</a></li>
                 </ul>
             </nav>
         </header>

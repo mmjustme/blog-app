@@ -11,5 +11,4 @@ define("APP", ROOT . "/app");
 define("CONTROLLERS", APP . "/controllers");
 define("VIEWS", APP . "/views");
 
-define("FOLDER", "blog-app");
-define("PATH", "http://localhost/blog-app");
+define("PATH", "http://localhost");
