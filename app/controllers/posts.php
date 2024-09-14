@@ -1,0 +1,1 @@
+<?php require VIEWS . "/posts.tpl.php";

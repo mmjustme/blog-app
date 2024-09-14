@@ -2,7 +2,8 @@
 
 <main class="main">
     <div class="container">
-        CREATE
+
+        POSTS
     </div>
 </main>
 
