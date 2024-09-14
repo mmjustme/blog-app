@@ -3,11 +3,12 @@
 class Db
 {
     private $connection;
+    private $stmt;
 
     public function __construct(array $db_config)
     {
         $dsn = "mysql:host={$db_config['host']};
-        dbusername={$db_config['dbusername']};charset={$db_config['charset']}";
+        dbname={$db_config['dbname']};charset={$db_config['charset']}";
         try {
             $this->connection = new PDO(
                 $dsn,
@@ -18,6 +19,18 @@ class Db
         } catch (PDOException $e) {
             die("Connection failed " . $e->getMessage());
         }
+    }
+
+    public function query($query, $params = [])
+    {
+        $this->stmt = $this->connection->prepare($query);
+        $this->stmt->execute($params);
+        return $this;
+    }
+
+    public function findAll()
+    {
+        return $this->stmt->fetchAll();
     }
 
 
