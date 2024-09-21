@@ -13,3 +13,14 @@ function dd($data)
     die;
 }
 ;
+
+function checkAllowedFields($fields = [])
+{
+    $data = [];
+    foreach ($_POST as $key => $value) {
+        if (in_array($key, $fields)) {
+            $data[$key] = $value;
+        }
+    }
+    return $data;
+}
