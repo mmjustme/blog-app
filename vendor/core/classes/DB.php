@@ -1,5 +1,9 @@
 <?php
 
+namespace core;
+use PDOException;
+use PDO;
+
 class Db
 {
     private $connection;
@@ -32,7 +36,5 @@ class Db
     {
         return $this->stmt->fetchAll();
     }
-
-
 }
 ;

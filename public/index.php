@@ -6,7 +6,7 @@ require CORE . "/funcs.php";
 require CORE . "/classes/DB.php";
 $db_config = require CONFIG . "/db.php";
 
-$db = new Db($db_config);
+$db = new \core\Db($db_config);
 // dd($db);
 
 

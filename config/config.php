@@ -2,7 +2,7 @@
 
 define("ROOT", dirname(__DIR__));
 
-define("CORE", ROOT . "/core");
+define("CORE", ROOT . "/vendor/core");
 
 define("CONFIG", ROOT . "/config");
 
