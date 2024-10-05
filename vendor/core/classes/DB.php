@@ -1,27 +1,47 @@
 <?php
 
 namespace core;
+
 use PDOException;
 use PDO;
+use PDOStatement;
 
-class Db
+final class Db
 {
     private $connection;
-    private $stmt;
+    private PDOStatement $stmt;
+    private static $instance = null;
 
-    public function __construct(array $db_config)
+    private function __cunstruct() {}
+
+    private function __clone() {}
+
+    public function __wakeup() {}
+
+    public static function getInstance()
     {
-        $dsn = "mysql:host={$db_config['host']};
-        dbname={$db_config['dbname']};charset={$db_config['charset']}";
+        if (self::$instance === null) {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
+
+    public function getConnection(array $db_config)
+    {
+        $host = $db_config['host'];
+        $dbname = $db_config['dbname'];
+        $charset = $db_config['charset'];
+        $dbusername = $db_config['dbusername'];
+        $dbpassword = $db_config['dbpassword'];
+        $options = $db_config['options'];
+        $dsn = "mysql:host={$host};dbname={$dbname};charset={$charset}";
+
         try {
-            $this->connection = new PDO(
-                $dsn,
-                $db_config['dbusername'],
-                $db_config['dbpassword'],
-                $db_config['options'],
-            );
+            $this->connection = new PDO($dsn, $dbusername, $dbpassword, $options);
+
+            return $this;
         } catch (PDOException $e) {
-            die("Connection failed " . $e->getMessage());
+            die("Connection to DB failed: " . $e->getMessage());
         }
     }
 
@@ -36,5 +56,4 @@ class Db
     {
         return $this->stmt->fetchAll();
     }
-}
-;
+};
