@@ -12,7 +12,7 @@ final class Db
     private PDOStatement $stmt;
     private static $instance = null;
 
-    private function __cunstruct() {}
+    private function __construct() {}
 
     private function __clone() {}
 
@@ -37,7 +37,7 @@ final class Db
         $dsn = "mysql:host={$host};dbname={$dbname};charset={$charset}";
 
         if ($this->connection instanceof PDO) {
-            return $this;
+            return $this->connection;
         }
 
         try {

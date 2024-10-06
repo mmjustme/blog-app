@@ -9,9 +9,10 @@ require CORE . '/../autoload.php';
 $db_config = require CONFIG . "/db.php";
 $db = \core\Db::getInstance()->getConnection($db_config);
 
-// $router = new \core\Router();
-// dd($router->routes);
+$router = new \core\Router();
 
 require CONFIG . '/routes.php';
+$router->match();
+// dd($router->routes);
 
-require CORE . "/router.php";
+// require CORE . "/router.php";

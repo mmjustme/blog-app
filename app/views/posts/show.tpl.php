@@ -3,7 +3,7 @@
 <main class="main">
     <div class="container">
 
-        POSTS
+        POST by Id
     </div>
 </main>
 

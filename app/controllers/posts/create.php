@@ -26,11 +26,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $formData
         );
     }
-
-
-
 }
 
 $title = "My BLOG :: NEW POST";
 
-require VIEWS . "/post-create.tpl.php";
+require VIEWS . "/posts/create.tpl.php";
