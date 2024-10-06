@@ -4,7 +4,7 @@
     <div class="container">
         <h1>New Post</h1>
 
-        <form action="" method="post">
+        <form action="/posts" method="post">
             <div class="mb-3">
                 <label for="title" class="form-label">Post Title</label>
                 <input name="title" type="text" class="form-control" id="title" placeholder="Post Title">
