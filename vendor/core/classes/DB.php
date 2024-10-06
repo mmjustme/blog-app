@@ -36,6 +36,10 @@ final class Db
         $options = $db_config['options'];
         $dsn = "mysql:host={$host};dbname={$dbname};charset={$charset}";
 
+        if ($this->connection instanceof PDO) {
+            return $this;
+        }
+
         try {
             $this->connection = new PDO($dsn, $dbusername, $dbpassword, $options);
 
