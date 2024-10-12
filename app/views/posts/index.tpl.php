@@ -7,11 +7,11 @@
                 <?php foreach ($posts as $post): ?>
                     <div class="card mb-3">
                         <div class="card-body">
-
-
-                            <h5 class="card-title">
-                                <?= $post["title"] ?>
-                            </h5>
+                            <a href="/posts?id=<?php echo $post['id'] ?>">
+                                <h5 class="card-title">
+                                    <?= $post["title"] ?>
+                                </h5>
+                            </a>
                             <p class="card-text">
                                 <?= $post["content"] ?>
                             </p>
@@ -25,7 +25,7 @@
                     <?php foreach ($recent_posts as $recent_post): ?>
 
                         <li class="list-group-item">
-                            <a href="post/<?= $recent_post["id"] ?>">
+                            <a href="/posts?id=<?= $recent_post["id"] ?>">
                                 <?= $recent_post["title"] ?>
                             </a>
                         </li>

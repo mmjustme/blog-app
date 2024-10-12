@@ -2,8 +2,10 @@
 
 <main class="main">
     <div class="container">
-
-        POST by Id
+        <h1><?= $post['title'] ?></h1>
+        <p>
+            <?= $post["content"] ?>
+        </p>
     </div>
 </main>
 
