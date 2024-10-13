@@ -37,7 +37,7 @@ final class Db
         $dsn = "mysql:host={$host};dbname={$dbname};charset={$charset}";
 
         if ($this->connection instanceof PDO) {
-            return $this->connection;
+            return $this;
         }
 
         try {
