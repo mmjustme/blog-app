@@ -31,3 +31,24 @@ function getDb(): \core\Db
 {
   return \core\App::get(\core\Db::class);
 }
+
+function abort($code = 404)
+{
+  http_response_code($code);
+  require VIEWS . "/errors/{$code}.tpl.php";
+  die();
+}
+
+function get_alerts()
+{
+  if (!empty($_SESSION['success'])) {
+    require_once VIEWS . '/inc/alert_success.php';
+    unset($_SESSION['success']);
+  }
+
+  if (!empty($_SESSION['error'])) {
+    require_once VIEWS . '/inc/alert_error.php';
+    unset($_SESSION['error']);
+  }
+
+}

@@ -49,12 +49,17 @@ final class Db
         }
     }
 
-    public function query($query, $params = [])
-    {
-        $this->stmt = $this->connection->prepare($query);
-        $this->stmt->execute($params);
-        return $this;
+  public function query($query, $params = [])
+  {
+    try {
+      $this->stmt = $this->connection->prepare($query);
+      $this->stmt->execute($params);
+    } catch (PDOException $e) {
+      abort(500);
     }
+
+    return $this;
+  }
 
     public function findAll()
     {
@@ -65,4 +70,9 @@ final class Db
     {
         return $this->stmt->fetch();
     }
+
+  public function rowCount()
+  {
+    return $this->stmt->rowCount();
+  }
 };

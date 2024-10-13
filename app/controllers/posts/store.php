@@ -22,6 +22,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       "INSERT INTO posts (`title`,`content`,`excerpt`) VALUES (:title,:content,:excerpt)",
       $formData
     );
+    $_SESSION["success"] = "Post created";
     header("Location: " . '/');
+    die();
+  } else {
+    $_SESSION["error"] = "DB error";
   }
 }
