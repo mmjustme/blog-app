@@ -6,15 +6,11 @@ function dump($data)
   echo "</pre>";
 }
 
-;
-
 function dd($data)
 {
   dump($data);
   die;
 }
-
-;
 
 function checkAllowedFields($fields = [])
 {
@@ -38,6 +34,18 @@ function abort($code = 404)
   require VIEWS . "/errors/{$code}.tpl.php";
   die();
 }
+
+function redirect($url = '')
+{
+  if ($url) {
+    $redirect = $url;
+  } else {
+    $redirect = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : PATH;
+  }
+  header("Location: {$redirect}");
+  die;
+}
+
 
 function get_alerts()
 {

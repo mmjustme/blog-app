@@ -28,27 +28,36 @@ class Router
     if (!$matches) echo "PAGE NOT FOUND";
   }
 
+  public function only($middleware)
+  {
+    $key = array_key_last($this->routes);
+    $this->routes[$key]['middleware'] = $middleware;
+    return $this;
+  }
+
   public function add($uri, $controller, $method)
   {
     $this->routes[] = [
       'uri' => $uri,
       'controller' => $controller,
       'method' => $method,
+      'middleware'=> null,
     ];
+    return $this;
   }
 
   public function get($uri, $controller)
   {
-    $this->add($uri, $controller, "GET");
+    return $this->add($uri, $controller, "GET");
   }
 
   public function post($uri, $controller)
   {
-    $this->add($uri, $controller, "POST");
+    return $this->add($uri, $controller, "POST");
   }
 
   public function delete($uri, $controller)
   {
-    $this->add($uri, $controller, "DELETE");
+    return $this->add($uri, $controller, "DELETE");
   }
 }
