@@ -46,6 +46,10 @@ function redirect($url = '')
   die;
 }
 
+function checkAuth(): bool
+{
+  return isset($_SESSION['user']);
+}
 
 function get_alerts()
 {

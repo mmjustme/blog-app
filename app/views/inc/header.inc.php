@@ -34,12 +34,14 @@
 						</li>
 					</ul>
 					<ul class="navbar-nav mb-2 mb-lg-0">
-            <?php if (isset($_SESSION['user'])): ?>
-							<li class="nav-item"><a class="nav-link" href="#">Dmytro</a></li>
-							<li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
+            <?php if (checkAuth()): ?>
+							<li class="nav-item"><a class="nav-link" href="#">
+                  <?= $_SESSION['user']['name'] ?>
+								</a></li>
+							<li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
             <?php else: ?>
-							<li class="nav-item"><a class="nav-link" href="register">Register</a></li>
-							<li class="nav-item"><a class="nav-link" href="login">Login</a></li>
+							<li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+							<li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
             <?php endif ?>
 					</ul>
 				</div>

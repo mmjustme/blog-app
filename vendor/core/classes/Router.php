@@ -20,6 +20,13 @@ class Router
 
     foreach ($this->routes as $route) {
       if (($route['uri'] === $this->uri) && ($route['method'] === strtoupper($this->method))) {
+
+        if($route['middleware']) {
+          $middleware = MIDDLEWARE[$route['middleware']] ?? false;
+          if (!$middleware) throw new \Exception('Incorrect middleware' . $route['middleware']);
+
+          (new $middleware)->handle();
+        }
         require CONTROLLERS . "/{$route['controller']}";
         $matches = true;
         break;
