@@ -46,6 +46,30 @@ function redirect($url = '')
   die;
 }
 
+function old($fieldname)
+{
+  return isset($_POST[$fieldname]) ? h($_POST[$fieldname]) : '';
+}
+
+function load($fillable)
+{
+  $data = [];
+  #задача перевірити чи в масиві fillable є поля з данних юзера
+  foreach ($_POST as $key => $value) {
+    # беремо $key і перевіряємо наявність в fillable
+    if (in_array($key, $fillable)) {
+      # запис данних юзера в масив data
+      $data[$key] = trim($value);
+    }
+  }
+  return $data;
+}
+
+function h($str)
+{
+  return htmlspecialchars($str, ENT_QUOTES);
+}
+
 function checkAuth(): bool
 {
   return isset($_SESSION['user']);

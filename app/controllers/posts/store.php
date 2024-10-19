@@ -1,31 +1,31 @@
 <?php
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+$allowed_fields = ['title', 'excerpt', 'content'];
 
-  $allowed_fields = ['title', 'excerpt', 'content'];
+$formData = load($allowed_fields);
+$form_rules = [
+  'title' => ['required' => true, 'min' => 3, 'max' => 250],
+  'excerpt' => ['required' => true, 'min' => 5, 'max' => 250],
+  'content' => ['required' => true, 'min' => 10,],
+];
 
-  $formData = checkAllowedFields($allowed_fields);
+$validator = new \core\Validator();
+$validation = $validator->validate($formData, $form_rules);
 
-  $errors = [];
-  if (empty($formData["title"])) {
-    $errors["title"] = "Title is requered";
-  }
-  if (empty($formData["content"])) {
-    $errors["content"] = "Content is requered";
-  }
-  if (empty($formData["excerpt"])) {
-    $errors["excerpt"] = "Excerpt is requered";
-  }
-
-  if (empty($errors)) {
-    getDb()->query(
-      "INSERT INTO posts (`title`,`content`,`excerpt`) VALUES (:title,:content,:excerpt)",
-      $formData
-    );
-    $_SESSION["success"] = "Post created";
-    header("Location: " . '/');
-    die();
+if (!$validation->hasErrors()) {
+  if (getDb()->query("INSERT INTO posts (`title`,`content`,`excerpt`) 
+                            VALUES (:title,:content,:excerpt)", $formData)) {
+    $_SESSION["success"] = "OK";
   } else {
     $_SESSION["error"] = "DB error";
   }
+  redirect('/');
+} else {
+  require VIEWS . "/posts/create.tpl.php";
 }
+
+$title = "My BLOG :: NEW POST";
+require VIEWS . "/posts/create.tpl.php";
+
+
+
