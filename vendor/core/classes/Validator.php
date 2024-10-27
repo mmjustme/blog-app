@@ -5,12 +5,13 @@ namespace core;
 class Validator
 {
   protected $errors = [];
-  protected $allowedValidationMethods = ['required', 'min', 'max', 'email'];
+  protected $allowedValidationMethods = ['required', 'min', 'max', 'email', 'unique'];
   protected $errorMessages = [
     'required' => 'The :fieldname: field is required',
     'min' => 'The :fieldname: field must be a minimun :rulevalue: characters',
     'max' => 'The :fieldname: field must be a maximum :rulevalue: characters',
     'email' => 'Not valid email',
+    'unique' => 'The :fieldname: have been already taken',
   ];
 
   public function validate($data = [], $rules = [])
@@ -89,6 +90,12 @@ class Validator
   protected function email($value, $rule_value)
   {
     return filter_var($value, FILTER_VALIDATE_EMAIL);
+  }
+
+  protected function unique($value, $rule_value): bool
+  {
+    $data = explode(':', $rule_value);
+    return (!getDb()->query("SELECT $data[1] FROM $data[0] WHERE $data[1] = ?", [$value])->getColumn());
   }
 
 }

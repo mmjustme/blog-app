@@ -6,6 +6,6 @@ class Auth
 {
   public function handle()
   {
-    if(!checkAuth()) redirect('/register');
+    if (!checkAuth()) redirect('/login');
   }
 }

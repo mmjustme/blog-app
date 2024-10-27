@@ -16,6 +16,7 @@ $router->delete('posts', 'posts/destroy.php')->only('auth');
 
 //Users
 $router->get('register', 'users/register.php')->only('guest');
+$router->post('register', 'users/store.php')->only('guest');
 $router->get('login', 'users/login.php')->only('guest');
 $router->get('logout', 'users/logout.php');
 
