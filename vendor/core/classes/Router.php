@@ -19,9 +19,9 @@ class Router
     $matches = false;
 
     foreach ($this->routes as $route) {
-      if (($route['uri'] === $this->uri) && ($route['method'] === strtoupper($this->method))) {
+      if (($route['uri'] === $this->uri) && (in_array($this->method, $route['method']))) {
 
-        if($route['middleware']) {
+        if ($route['middleware']) {
           $middleware = MIDDLEWARE[$route['middleware']] ?? false;
           if (!$middleware) throw new \Exception('Incorrect middleware' . $route['middleware']);
 
@@ -44,11 +44,17 @@ class Router
 
   public function add($uri, $controller, $method)
   {
+    if (is_array($method)) {
+      $method = array_map('strtoupper', $method);
+    } else {
+      # якщо ж $method не масив ми зробимо з нього масив навмисне
+      $method = [$method];
+    }
     $this->routes[] = [
       'uri' => $uri,
       'controller' => $controller,
       'method' => $method,
-      'middleware'=> null,
+      'middleware' => null,
     ];
     return $this;
   }
