@@ -2,6 +2,7 @@
 $allowed_fields = ['title', 'excerpt', 'content'];
 
 $formData = load($allowed_fields);
+$formData['user_id'] = $_SESSION['user']['id'];
 
 $form_rules = [
   'title' => ['required' => true, 'min' => 3, 'max' => 250],

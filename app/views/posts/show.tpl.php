@@ -10,6 +10,7 @@
 				<form action="/posts" method="post">
 					<input type="hidden" name="_method" value="delete">
 					<input type="hidden" name="id" value="<?= $post['id'] ?>">
+					<input type="hidden" name="user_id" value="<?= $post['user_id'] ?>">
 					<button class="btn btn-primary">Delete Post</button>
 				</form>
 				<form action="/posts/edit" method="get">

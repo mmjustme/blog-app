@@ -24,7 +24,7 @@ class Posts
 
   public static function createPost(array $postData)
   {
-    $query = "INSERT INTO posts (`title`,`content`,`excerpt`) VALUES (:title,:content,:excerpt)";
+    $query = "INSERT INTO posts (`title`,`content`,`excerpt`,`user_id`) VALUES (:title,:content,:excerpt,:user_id)";
     return getDb()->query($query, $postData);
   }
 
