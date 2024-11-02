@@ -1,8 +1,8 @@
 <?php
-
 $allowed_fields = ['title', 'excerpt', 'content'];
 
 $formData = load($allowed_fields);
+
 $form_rules = [
   'title' => ['required' => true, 'min' => 3, 'max' => 250],
   'excerpt' => ['required' => true, 'min' => 5, 'max' => 250],
@@ -13,8 +13,7 @@ $validator = new \core\Validator();
 $validation = $validator->validate($formData, $form_rules);
 
 if (!$validation->hasErrors()) {
-  if (getDb()->query("INSERT INTO posts (`title`,`content`,`excerpt`) 
-                            VALUES (:title,:content,:excerpt)", $formData)) {
+  if (\models\Posts::createPost($formData)) {
     $_SESSION["success"] = "Post has created";
   } else {
     $_SESSION["error"] = "DB error";

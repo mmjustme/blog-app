@@ -16,8 +16,7 @@ $validation = $validator->validate($data, $form_rules);
 if (!$validation->hasErrors()) {
   $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
-  if (getDb()->query("INSERT INTO users (`name`,`email`,`password`) 
-    VALUES (:name,:email,:password)", $data)) {
+  if (\models\Users::createUser($data)) {
     $_SESSION['success'] = 'User has been successful registered';
   } else {
     $_SESSION['error'] = 'DB error';

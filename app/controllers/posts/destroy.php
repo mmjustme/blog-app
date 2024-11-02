@@ -2,10 +2,10 @@
 
 $postId = $_POST['id'];
 
-getDb()->query("DELETE FROM posts WHERE id = ?", [$postId]);
+\models\Posts::deletePostById($postId);
 
 if (getDb()->rowCount()) {
-  $res['answer'] = $_SESSION['success'] = "Post deleted";
+  $res['answer'] = $_SESSION['success'] = "Post has deleted";
 } else {
   $res['answer'] = $_SESSION['error'] = "Deleting error";
 }

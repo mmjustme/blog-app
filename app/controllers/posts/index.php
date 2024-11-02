@@ -1,6 +1,6 @@
 <?php
 
-$posts = getDb()->query("SELECT * FROM posts ORDER BY id DESC")->findAll();
-$recent_posts = getDb()->query("SELECT * FROM posts ORDER BY id DESC LIMIT 5")->findAll();
+$posts = \models\Posts::getAllPosts();
+$recent_posts = \models\Posts::getRecentPosts();
 
 require VIEWS . "/posts/index.tpl.php";

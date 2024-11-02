@@ -13,15 +13,13 @@ $form_rules = [
   'content' => ['required' => true, 'min' => 10,],
 ];
 //print_r($formData);
-echo "AM i hre";
 $validator = new \core\Validator();
 $validation = $validator->validate($formData, $form_rules);
 
 if (!$validation->hasErrors()) {
-  if (getDb()->query("UPDATE posts SET title=:title, excerpt=:excerpt,content=:content WHERE id = :id",
-    $formData)) {
+  if (\models\Posts::updatePost($formData)) {
     $_SESSION["success"] = "Post has updated";
-    
+
     if ($_SESSION['post_data']) unset($_SESSION['post_data']);
   } else {
     $_SESSION["error"] = "DB error";

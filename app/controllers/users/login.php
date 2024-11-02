@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $validation = $validator->validate($data, $form_rule);
 
   if (!$validation->hasErrors()) {
-    $user = getDb()->query("SELECT * FROM users WHERE email = ?", [$data['email']])->find();
+    $user = \models\Users::getUserByEmail($data['email']);
 
     if (!$user) {
       $_SESSION['error'] = "Wrong email or password";
