@@ -19,7 +19,8 @@ class Router
     $matches = false;
 
     foreach ($this->routes as $route) {
-      if (($route['uri'] === $this->uri) && (in_array($this->method, $route['method']))) {
+
+      if (($route['uri'] === $this->uri) && (in_array(strtoupper($this->method), $route['method']))) {
 
         if ($route['middleware']) {
           $middleware = MIDDLEWARE[$route['middleware']] ?? false;
@@ -32,7 +33,7 @@ class Router
         break;
       }
     }
-    if (!$matches) echo "PAGE NOT FOUND";
+    if (!$matches) echo abort();
   }
 
   public function only($middleware)
@@ -72,5 +73,10 @@ class Router
   public function delete($uri, $controller)
   {
     return $this->add($uri, $controller, "DELETE");
+  }
+
+  public function put($uri, $controller)
+  {
+    return $this->add($uri, $controller, "UPDATE");
   }
 }

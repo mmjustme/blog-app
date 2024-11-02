@@ -15,7 +15,7 @@ $validation = $validator->validate($formData, $form_rules);
 if (!$validation->hasErrors()) {
   if (getDb()->query("INSERT INTO posts (`title`,`content`,`excerpt`) 
                             VALUES (:title,:content,:excerpt)", $formData)) {
-    $_SESSION["success"] = "OK";
+    $_SESSION["success"] = "Post has created";
   } else {
     $_SESSION["error"] = "DB error";
   }
