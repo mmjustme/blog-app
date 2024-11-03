@@ -1,0 +1,22 @@
+{
+  "name": "blog-app",
+  "version": "1.0.0",
+  "description": "php mini blog",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mmjustme/blog-app.git"
+  },
+  "author": "mmjustme",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mmjustme/blog-app/issues"
+  },
+  "homepage": "https://github.com/mmjustme/blog-app#readme",
+  "devDependencies": {
+    "gulp": "^5.0.0"
+  }
+}
