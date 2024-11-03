@@ -32,11 +32,16 @@
 						<li class="nav-item">
 							<a class="nav-link" href="posts/create">New Post</a>
 						</li>
+            <?php if (checkAuth()): ?>
+							<li class="nav-item">
+								<a class="nav-link" href="users/posts">My Posts</a>
+							</li>
+            <?php endif ?>
 					</ul>
 					<ul class="navbar-nav mb-2 mb-lg-0">
             <?php if (checkAuth()): ?>
 							<li class="nav-item"><a class="nav-link" href="#">
-                  <?= $_SESSION['user']['name'] ?>
+                  <?= ucfirst($_SESSION['user']['name']) ?>
 								</a></li>
 							<li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
             <?php else: ?>

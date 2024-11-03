@@ -19,5 +19,4 @@ class Users
     $query = 'INSERT INTO users (`name`,`email`,`password`) VALUES (:name,:email,:password)';
     return getDb()->query($query, $data);
   }
-
 }

@@ -2,13 +2,12 @@
 
 $postId = $_POST['id'];
 $user_id = $_POST['user_id'];
-var_dump((int)$user_id);
-var_dump($_SESSION['user']['id']);
 
 if ($user_id == $_SESSION['user']['id']) {
   \models\Posts::deletePostById($postId);
 } else {
-  echo "Denied";
+  abort();
+  die();
 }
 
 
