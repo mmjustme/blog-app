@@ -51,15 +51,19 @@ function old($fieldname)
   return isset($_POST[$fieldname]) ? h($_POST[$fieldname]) : '';
 }
 
-function load($fillable)
+function load($fillable, $post = true)
 {
+  $load_data = $post ? $_POST : $_GET;
   $data = [];
-  #задача перевірити чи в масиві fillable є поля з данних юзера
-  foreach ($_POST as $key => $value) {
-    # беремо $key і перевіряємо наявність в fillable
-    if (in_array($key, $fillable)) {
-      # запис данних юзера в масив data
-      $data[$key] = trim($value);
+
+  foreach ($fillable as $name) {
+    if (isset($load_data[$name])) {
+      !is_array($load_data[$name])
+        ? $data[$name] = trim($load_data[$name])
+        : $data[$name] = $load_data[$name];
+
+    } else {
+      $data[$name] = '';
     }
   }
   return $data;

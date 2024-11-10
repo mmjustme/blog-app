@@ -2,7 +2,12 @@
 
 $title = 'My Blog :: Register';
 
-$data = load(['name', 'email', 'password']);
+$data = load(['name', 'email', 'password', 'avatar']);
+
+dump($_POST); // data from form
+dump($_FILES); // files
+dump($data); // form data after fn load
+die;
 
 $form_rules = [
   'name' => ['min' => 3, 'max' => 100, 'required' => true],

@@ -6,7 +6,7 @@
 				<div class="col-md-4 m-auto">
 					<h1>Register Page</h1>
 
-					<form action="/register" method="post">
+					<form action="/register" method="post" enctype="multipart/form-data">
 						<div class="mb-3">
 							<label for="name" class="form-label">Name</label>
 							<input name="name" type="text" class="form-control" id="name" placeholder="Name"
@@ -26,6 +26,12 @@
 							<input name="password" type="password" class="form-control" id="password" rows="2" placeholder="Password"
 										 value="<?= old('password') ?>">
               <?= isset($validation) ? $validation->listErrors("password") : ''; ?>
+						</div>
+
+						<div class="mb-3">
+							<label for="avatar" class="form-label">Avatar</label>
+							<input name="avatar" class="form-control" type="file" id="avatar">
+              <?= isset($validation) ? $validation->listErrors("avatar") : ''; ?>
 						</div>
 
 						<div class="mb-3">
