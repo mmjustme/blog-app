@@ -92,3 +92,9 @@ function get_alerts()
   }
 
 }
+
+function getFileExt($fileName)
+{
+  $fileName = explode('.', $fileName);
+  return end($fileName);
+}
