@@ -6,8 +6,12 @@ define("CORE", ROOT . "/vendor/core");
 
 define("CONFIG", ROOT . "/config");
 
+define("PUBLIC_FOLDER", ROOT . "/public");
+define("UPLOADS", PUBLIC_FOLDER . "/uploads");
 
 define("APP", ROOT . "/app");
+
+
 define("CONTROLLERS", APP . "/controllers");
 define("VIEWS", APP . "/views");
 

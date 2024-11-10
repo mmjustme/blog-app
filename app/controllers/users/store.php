@@ -12,7 +12,7 @@ $data = load(['name', 'email', 'password']);
   ? $data['avatar'] = $_FILES['avatar']
   : $data['avatar'] = [];
 
-//dump($data); // form data after fn load
+dump($data); // form data after fn load
 //die;
 
 $form_rules = [
@@ -28,12 +28,31 @@ $form_rules = [
 $validator = new \core\Validator();
 $validation = $validator->validate($data, $form_rules);
 
-dd($validation->getErrors());
 
 if (!$validation->hasErrors()) {
   $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
-  if (\models\Users::createUser($data)) {
+  if (\models\Users::createUser([$data['name'], $data['email'], $data['password']])) {
+
+    if (!empty($data['avatar']['name'])) {
+      $id = getDb()->getInsertId();
+      $fileExt = getFileExt($data['avatar']['name']);
+
+      $dir = '/avatars/' . date("Y") . "/" . date('m') . "/" . date('d');
+      if(!is_dir($dir)){
+        mkdir(UPLOADS . $dir,0755, true);
+      }
+      $file_path = UPLOADS . "{$dir}/avatar-{$id}.{$fileExt}";
+      $file_url = "/uploads$dir/avatar-{$id}.{$fileExt}";
+
+      if(move_uploaded_file($data['avatar']['tmp_name'],$file_path)){
+        \models\Users::setUserAvatar([$file_url,$id]);
+      } else {
+        echo "error upload file";
+      }
+    }
+
+
     $_SESSION['success'] = 'User has been successful registered';
   } else {
     $_SESSION['error'] = 'DB error';

@@ -61,6 +61,7 @@ final class Db
       $this->stmt = $this->connection->prepare($query);
       $this->stmt->execute($params);
     } catch (PDOException $e) {
+      var_dump($e->getMessage());
       abort(500);
     }
 
@@ -86,6 +87,9 @@ final class Db
   {
     return $this->stmt->fetchColumn();
   }
-}
 
-;
+  public function getInsertId()
+  {
+    return $this->connection->lastInsertId();
+  }
+}

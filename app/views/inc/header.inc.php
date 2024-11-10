@@ -41,8 +41,12 @@
 					<ul class="navbar-nav mb-2 mb-lg-0">
             <?php if (checkAuth()): ?>
 							<li class="nav-item"><a class="nav-link" href="#">
-                  <?= ucfirst($_SESSION['user']['name']) ?>
+									<?= ucfirst($_SESSION['user']['name']) ?>
 								</a></li>
+							<a class="nav-link">
+								<img src="<?= $_SESSION['user']['avatar']?>" height="30px" width="30px" alt="avatar"
+										 class="rounded d-none d-lg-block">
+							</a>
 							<li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
             <?php else: ?>
 							<li class="nav-item"><a class="nav-link" href="/register">Register</a></li>

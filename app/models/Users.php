@@ -16,7 +16,14 @@ class Users
   {
 //    getDb()->query("INSERT INTO users (`name`,`email`,`password`)
 //    VALUES (:name,:email,:password)", $data)
-    $query = 'INSERT INTO users (`name`,`email`,`password`) VALUES (:name,:email,:password)';
+    $query = 'INSERT INTO users (`name`,`email`,`password`) VALUES (?,?,?)';
     return getDb()->query($query, $data);
   }
+
+  public static function setUserAvatar($data)
+  {
+    $query = "UPDATE users SET avatar=? WHERE id=?";
+    return getDb()->query($query,$data);
+  }
+
 }
