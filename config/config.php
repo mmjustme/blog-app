@@ -2,7 +2,8 @@
 
 define("ROOT", dirname(__DIR__));
 
-define("CORE", ROOT . "/vendor/core");
+define("CORE", ROOT . "/app/core");
+define("AUTOLOAD", ROOT . '/vendor');
 
 define("CONFIG", ROOT . "/config");
 
