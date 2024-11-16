@@ -7,10 +7,11 @@ require __DIR__ . '/../vendor/autoload.php';
 
 use Dotenv\Dotenv;
 
-$dotenv = Dotenv::createImmutable(__DIR__);
+require dirname(__DIR__) . "/config/config.php";
+
+$dotenv = Dotenv::createImmutable(ROOT);
 $dotenv->load();
 
-require dirname(__DIR__) . "/config/config.php";
 require __DIR__ . "/bootstrap.php";
 require APP . "/core/funcs.php";
 
