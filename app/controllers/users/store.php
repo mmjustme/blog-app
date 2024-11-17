@@ -12,16 +12,17 @@ $data = load(['name', 'email', 'password']);
   ? $data['avatar'] = $_FILES['avatar']
   : $data['avatar'] = [];
 
-dump($data); // form data after fn load
+// dump($data); // form data after fn load
 //die;
 
 $form_rules = [
   'name' => ['min' => 3, 'max' => 100, 'required' => true],
   'email' => ['min' => 3, 'max' => 100, 'required' => true, 'unique' => 'users:email'],
   'password' => ['min' => 6, 'required' => true],
-  'avatar' => ['ext' => 'jpg|gif',
+  'avatar' => [
+    'ext' => 'jpg|gif',
     'size' => 1_048_576,
-//    'required' => true
+    //    'required' => true
   ]
 ];
 
@@ -39,14 +40,14 @@ if (!$validation->hasErrors()) {
       $fileExt = getFileExt($data['avatar']['name']);
 
       $dir = '/avatars/' . date("Y") . "/" . date('m') . "/" . date('d');
-      if(!is_dir($dir)){
-        mkdir(UPLOADS . $dir,0755, true);
+      if (!is_dir($dir)) {
+        mkdir(UPLOADS . $dir, 0755, true);
       }
       $file_path = UPLOADS . "{$dir}/avatar-{$id}.{$fileExt}";
       $file_url = "/uploads$dir/avatar-{$id}.{$fileExt}";
 
-      if(move_uploaded_file($data['avatar']['tmp_name'],$file_path)){
-        \models\Users::setUserAvatar([$file_url,$id]);
+      if (move_uploaded_file($data['avatar']['tmp_name'], $file_path)) {
+        \models\Users::setUserAvatar([$file_url, $id]);
       } else {
         echo "error upload file";
       }

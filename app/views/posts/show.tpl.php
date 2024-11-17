@@ -1,13 +1,13 @@
 <?php require VIEWS . "/inc/header.inc.php" ?>
 
-	<main class="main">
-		<div class="container">
-			<h1><?= $post['title'] ?></h1>
-			<p>
-        <?= $post["content"] ?>
-			</p>
+<main class="main">
+	<div class="container">
+		<h1><?= $post['title'] ?></h1>
+		<p>
+			<?= $post["content"] ?>
+		</p>
 
-      <?php if (isset($_SESSION['user']) && $post['user_id'] === $_SESSION['user']['id']): ?>
+		<?php if (isset($_SESSION['user']) && $post['user_id'] === $_SESSION['user']['id']): ?>
 			<div class="d-flex justify-content-between">
 				<form action="/posts" method="post">
 					<input type="hidden" name="_method" value="delete">
@@ -19,9 +19,10 @@
 					<input type="hidden" name="id" value="<?= $post['id'] ?>">
 					<button class="btn btn-warning">Edit Post</button>
 				</form>
-        <?php endif; ?>
+			<?php endif; ?>
 			</div>
-		</div>
-	</main>
+			<div class="test1">askasls</div>
+	</div>
+</main>
 
 <?php require VIEWS . "/inc/footer.inc.php" ?>
