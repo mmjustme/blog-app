@@ -1,1 +1,1 @@
-.test1{color:#90f}.test{color:red}
+@charset "UTF-8";.test1{color:#90f}body{min-width:320px}body,html{height:100%}.wrapper{min-height:100%;display:flex;flex-direction:column}main.main{flex:1 1 auto}.test{color:red}

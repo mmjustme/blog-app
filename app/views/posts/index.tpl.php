@@ -16,9 +16,8 @@
 								<?= $post["content"] ?>
 							</p>
 							<div class="text-end fw-light">
-								<div class="test">TESS</div>
-								<p class="mb-0">Creator: <?= $post['creator'] ?></p>
-								<p class="mb-0">Created: <?= $post['created_at'] ?></p>
+								<p class="mb-0"><?= $post['creator'] ?></p>
+								<p class="mb-0"><?= $post['created_at'] ?></p>
 							</div>
 
 

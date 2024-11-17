@@ -1,5 +1,26 @@
+@charset "UTF-8";
 .test1 {
   color: rgb(153, 0, 255);
+}
+
+body {
+  min-width: 320px;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main.main {
+  /* иаким чином ми сказали щоб main займав максимум зверху і низу місця */
+  flex: 1 1 auto;
 }
 
 .test {
