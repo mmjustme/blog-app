@@ -25,4 +25,5 @@ $router->add('login', 'users/login.php', ['get', 'post'])->only('guest');
 $router->get('logout', 'users/logout.php');
 $router->get('users/posts', 'users/userPosts.php')->only('auth');
 
-//dump($router->routes);
+// dump($router->uri);
+// dump($router->routes);

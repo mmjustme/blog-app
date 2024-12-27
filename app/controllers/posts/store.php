@@ -19,13 +19,10 @@ if (!$validation->hasErrors()) {
   } else {
     $_SESSION["error"] = "DB error";
   }
-  redirect('/');
+  redirect(BASE_URL . '/');
 } else {
   require VIEWS . "/posts/create.tpl.php";
 }
 
 $title = "My BLOG :: NEW POST";
 require VIEWS . "/posts/create.tpl.php";
-
-
-

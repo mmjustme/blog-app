@@ -40,7 +40,7 @@ function redirect($url = '')
   if ($url) {
     $redirect = $url;
   } else {
-    $redirect = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : PATH;
+    $redirect = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : BASE_URL;
   }
   header("Location: {$redirect}");
   die;
@@ -61,7 +61,6 @@ function load($fillable, $post = true)
       !is_array($load_data[$name])
         ? $data[$name] = trim($load_data[$name])
         : $data[$name] = $load_data[$name];
-
     } else {
       $data[$name] = '';
     }
@@ -90,7 +89,6 @@ function get_alerts()
     require_once VIEWS . '/inc/alert_error.php';
     unset($_SESSION['error']);
   }
-
 }
 
 function getFileExt($fileName)

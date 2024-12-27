@@ -16,3 +16,4 @@ define("CONTROLLERS", APP . "/controllers");
 define("VIEWS", APP . "/views");
 
 define("PATH", "http://localhost");
+define("BASE_URL", "/my-projects/blog-app");

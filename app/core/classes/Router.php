@@ -5,12 +5,14 @@ namespace core;
 class Router
 {
   public $routes = [];
-  protected $uri;
+  public $uri;
   protected $method;
+  public $base_url = BASE_URL;
 
   public function __construct()
   {
-    $this->uri = trim(parse_url($_SERVER['REQUEST_URI'])['path'], '/');
+    $this->uri = trim(str_replace($this->base_url, '', parse_url($_SERVER['REQUEST_URI'])['path']), '/');
+    // $this->uri = str_replace($this->base_url, '', $this->uri);
     $this->method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
   }
 
