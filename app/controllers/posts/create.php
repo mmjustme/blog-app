@@ -1,4 +1,4 @@
 <?php
 
-$title = "My BLOG :: NEW POST";
+$title = setPageTitle('newPost');
 require VIEWS . "/posts/create.tpl.php";

@@ -1,6 +1,7 @@
 <?php
 
-$title = 'My Blog :: Login';
+$title = setPageTitle('login');
+
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 

@@ -1,5 +1,6 @@
 <?php
-$title = "My BLOG :: EDIT POST";
+
+$title = setPageTitle('editPost');
 
 $post = \models\Posts::getPostById($_GET['id']);
 

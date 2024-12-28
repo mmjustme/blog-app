@@ -1,4 +1,5 @@
 <?php
+
 function dump($data)
 {
   echo "<pre>";
@@ -95,4 +96,10 @@ function getFileExt($fileName)
 {
   $fileName = explode('.', $fileName);
   return end($fileName);
+}
+
+function setPageTitle(string $title)
+{
+  $titles_list = require CONFIG . "/pageTitlesENUM.php";
+  return  $titles_list[$title];
 }

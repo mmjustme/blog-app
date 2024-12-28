@@ -1,6 +1,6 @@
 <?php
 
-$title = 'My Blog :: Register';
+$title = setPageTitle('register');
 
 $data = load(['name', 'email', 'password']);
 

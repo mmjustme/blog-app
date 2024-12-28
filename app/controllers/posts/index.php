@@ -1,5 +1,6 @@
 <?php
 
+$title = setPageTitle('home');
 $posts = \models\Posts::getAllPosts();
 $recent_posts = \models\Posts::getRecentPosts();
 

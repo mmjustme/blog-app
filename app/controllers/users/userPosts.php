@@ -1,5 +1,5 @@
 <?php
-
+$title = setPageTitle('myPosts');
 $userId = $_SESSION['user']['id'];
 
 $posts = \models\Posts::getUserPosts($userId);
