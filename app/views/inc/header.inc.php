@@ -44,7 +44,7 @@
 										<?= ucfirst($_SESSION['user']['name']) ?>
 									</a></li>
 								<a class="nav-link">
-									<img src="<?= $_SESSION['user']['avatar'] ?>" height="30px" width="30px" alt="avatar"
+									<img src="<?= BASE_URL . $_SESSION['user']['avatar'] ?>" height="30px" width="30px" alt="avatar"
 										class="rounded d-none d-lg-block">
 								</a>
 								<li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
