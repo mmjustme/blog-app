@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     $_SESSION['success'] = 'Successful authorized';
-    redirect('/');
+    redirect(BASE_URL . '/');
   }
 }
 

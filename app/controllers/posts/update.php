@@ -24,21 +24,17 @@ if (!$validation->hasErrors()) {
   } else {
     $_SESSION["error"] = "DB error";
   }
-  redirect("/posts?id=$postId");
+  redirect(BASE_URL . "/posts?id=$postId");
 } else {
   $post = $_SESSION['post_data'];
-//  $post = getDb()->query('SELECT * from posts WHERE id = ?', [$postId])->find();
+  //  $post = getDb()->query('SELECT * from posts WHERE id = ?', [$postId])->find();
 
-//  $post['title'] = $formData['title'];
-//  $post['excerpt'] = $formData['excerpt'];
-//  $post['content'] = $formData['content'];
+  //  $post['title'] = $formData['title'];
+  //  $post['excerpt'] = $formData['excerpt'];
+  //  $post['content'] = $formData['content'];
 
   require VIEWS . "/posts/edit.tpl.php";
 }
 
 $title = "My BLOG :: EDIT POST";
 //require VIEWS . "/posts/edit.tpl.php";
-
-
-
-

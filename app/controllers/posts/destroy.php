@@ -17,5 +17,5 @@ if (getDb()->rowCount()) {
   $res['answer'] = $_SESSION['error'] = "Deleting error";
 }
 
-header("Location: " . '/');
+header("Location: " . BASE_URL . '/');
 die();
