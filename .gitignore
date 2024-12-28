@@ -2,5 +2,5 @@
 /node_modules
 /vendor
 .env
-/public/uploads
+/public/uploads/avatars
 
